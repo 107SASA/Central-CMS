@@ -3,8 +3,9 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { FileText, Plus } from "lucide-react";
+import { FileText } from "lucide-react";
 import { AddPageDialog } from "@/components/pages/add-page-dialog";
+import { InitializePagesButton } from "@/components/pages/initialize-pages-button";
 import { formatDate } from "@/lib/utils";
 import type { Page } from "@/types";
 
@@ -37,7 +38,10 @@ export default async function PagesPage({ params }: Props) {
           <h1 className="text-2xl font-semibold tracking-tight">Pages</h1>
           <p className="text-sm text-muted-foreground mt-1">{website.name}</p>
         </div>
-        <AddPageDialog websiteId={website.id} websiteSlug={websiteSlug} />
+        <div className="flex items-center gap-2">
+          <InitializePagesButton websiteId={website.id} />
+          <AddPageDialog websiteId={website.id} websiteSlug={websiteSlug} />
+        </div>
       </div>
 
       {!pages || pages.length === 0 ? (
@@ -47,9 +51,9 @@ export default async function PagesPage({ params }: Props) {
           </div>
           <h3 className="font-medium mb-1">No pages yet</h3>
           <p className="text-sm text-muted-foreground mb-4">
-            Create the first page for this website.
+            Click <strong>Initialize Pages</strong> above to auto-create all pages with pre-filled content — or add one manually.
           </p>
-          <AddPageDialog websiteId={website.id} websiteSlug={websiteSlug} />
+          <InitializePagesButton websiteId={website.id} />
         </div>
       ) : (
         <div className="border rounded-lg overflow-hidden">
