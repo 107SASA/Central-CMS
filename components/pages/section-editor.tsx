@@ -225,18 +225,26 @@ function FieldInput({
         </div>
       );
 
-    case "textarea":
+    case "textarea": {
+      const isJson = field.field_key.endsWith("_json");
       return (
         <div className="space-y-1.5">
           <Label className="text-xs">{label}</Label>
           <Textarea
             value={field.field_value || ""}
             onChange={(e) => onChange(e.target.value)}
-            rows={3}
+            rows={isJson ? 10 : 3}
             placeholder={`Enter ${label.toLowerCase()}...`}
+            className={isJson ? "font-mono text-xs" : ""}
           />
+          {isJson && (
+            <p className="text-xs text-muted-foreground">
+              JSON format — each item must follow the same structure as the existing ones. Save and publish to see changes on the site.
+            </p>
+          )}
         </div>
       );
+    }
 
     case "boolean":
       return (
