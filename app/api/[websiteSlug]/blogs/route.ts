@@ -1,6 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
-import { createClient } from "@/lib/supabase/server";
+import { createClient } from "@supabase/supabase-js";
 import { validateApiKey } from "@/lib/api-auth";
+
+function getServiceClient() {
+  return createClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.SUPABASE_SERVICE_ROLE_KEY!
+  );
+}
 
 export async function GET(
   request: NextRequest,
@@ -11,7 +18,7 @@ export async function GET(
 
   if (!valid) return error!;
 
-  const supabase = await createClient();
+  const supabase = getServiceClient();
 
   const url = new URL(request.url);
   const page = parseInt(url.searchParams.get("page") || "1");
