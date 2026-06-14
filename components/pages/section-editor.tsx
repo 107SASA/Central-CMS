@@ -25,6 +25,23 @@ import {
 } from "@/components/ui/alert-dialog";
 import { Loader2, Trash2, ChevronDown, ChevronUp, Plus } from "lucide-react";
 import type { Section, SectionField, FieldType } from "@/types";
+import {
+  ServicesListEditor,
+  TeamListEditor,
+  TestimonialsListEditor,
+  StaffListEditor,
+  StringListEditor,
+  ServiceBlocksListEditor,
+  ProductsListEditor,
+  ProjectsListEditor,
+  IndustriesListEditor,
+  MilestonesListEditor,
+  CertificationsListEditor,
+  PartnersListEditor,
+  OfficesListEditor,
+  HeroSlidesListEditor,
+  AnsplTeamListEditor,
+} from "@/components/pages/list-editors";
 
 interface Props {
   section: Section;
@@ -226,6 +243,132 @@ function FieldInput({
       );
 
     case "textarea": {
+      // Route known JSON fields to their dedicated form editors
+      if (field.field_key === "services_json") {
+        return (
+          <div className="space-y-1.5">
+            <Label className="text-xs">{label}</Label>
+            <ServicesListEditor value={field.field_value} onChange={onChange} />
+          </div>
+        );
+      }
+      if (field.field_key === "team_json") {
+        return (
+          <div className="space-y-1.5">
+            <Label className="text-xs">{label}</Label>
+            <TeamListEditor value={field.field_value} onChange={onChange} />
+          </div>
+        );
+      }
+      if (field.field_key === "testimonials_json") {
+        return (
+          <div className="space-y-1.5">
+            <Label className="text-xs">{label}</Label>
+            <TestimonialsListEditor value={field.field_value} onChange={onChange} />
+          </div>
+        );
+      }
+      if (field.field_key === "staff_json") {
+        return (
+          <div className="space-y-1.5">
+            <Label className="text-xs">{label}</Label>
+            <StaffListEditor value={field.field_value} onChange={onChange} />
+          </div>
+        );
+      }
+      if (field.field_key === "credentials_json") {
+        return (
+          <div className="space-y-1.5">
+            <Label className="text-xs">{label}</Label>
+            <StringListEditor
+              value={field.field_value}
+              onChange={onChange}
+              placeholder="e.g. Bar Council of India"
+            />
+          </div>
+        );
+      }
+      if (field.field_key === "slides_json") {
+        return (
+          <div className="space-y-1.5">
+            <Label className="text-xs">{label}</Label>
+            <HeroSlidesListEditor value={field.field_value} onChange={onChange} />
+          </div>
+        );
+      }
+      if (field.field_key === "blocks_json") {
+        return (
+          <div className="space-y-1.5">
+            <Label className="text-xs">{label}</Label>
+            <ServiceBlocksListEditor value={field.field_value} onChange={onChange} />
+          </div>
+        );
+      }
+      if (field.field_key === "products_json") {
+        return (
+          <div className="space-y-1.5">
+            <Label className="text-xs">{label}</Label>
+            <ProductsListEditor value={field.field_value} onChange={onChange} />
+          </div>
+        );
+      }
+      if (field.field_key === "projects_json") {
+        return (
+          <div className="space-y-1.5">
+            <Label className="text-xs">{label}</Label>
+            <ProjectsListEditor value={field.field_value} onChange={onChange} />
+          </div>
+        );
+      }
+      if (field.field_key === "industries_json") {
+        return (
+          <div className="space-y-1.5">
+            <Label className="text-xs">{label}</Label>
+            <IndustriesListEditor value={field.field_value} onChange={onChange} />
+          </div>
+        );
+      }
+      if (field.field_key === "milestones_json") {
+        return (
+          <div className="space-y-1.5">
+            <Label className="text-xs">{label}</Label>
+            <MilestonesListEditor value={field.field_value} onChange={onChange} />
+          </div>
+        );
+      }
+      if (field.field_key === "certs_json") {
+        return (
+          <div className="space-y-1.5">
+            <Label className="text-xs">{label}</Label>
+            <CertificationsListEditor value={field.field_value} onChange={onChange} />
+          </div>
+        );
+      }
+      if (field.field_key === "partners_json") {
+        return (
+          <div className="space-y-1.5">
+            <Label className="text-xs">{label}</Label>
+            <PartnersListEditor value={field.field_value} onChange={onChange} />
+          </div>
+        );
+      }
+      if (field.field_key === "offices_json") {
+        return (
+          <div className="space-y-1.5">
+            <Label className="text-xs">{label}</Label>
+            <OfficesListEditor value={field.field_value} onChange={onChange} />
+          </div>
+        );
+      }
+      if (field.field_key === "anspl_team_json") {
+        return (
+          <div className="space-y-1.5">
+            <Label className="text-xs">{label}</Label>
+            <AnsplTeamListEditor value={field.field_value} onChange={onChange} />
+          </div>
+        );
+      }
+      // Generic textarea for other fields (plain text or unknown JSON)
       const isJson = field.field_key.endsWith("_json");
       return (
         <div className="space-y-1.5">

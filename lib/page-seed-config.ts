@@ -15,6 +15,97 @@ const TEAM_DEFAULT = JSON.stringify([
   { photo: "/vimesh-arora.jpg", badge: "Co-Founder & Managing Partner", name: "Adv. Vimesh Arora", title: "LL.B · Corporate & Litigation Specialist", quote: "In India's fast-growing economy, your brand is your most valuable asset. Protecting it from day one is not optional — it is essential.", tags: ["Litigation", "Business Law", "Corporate Law", "High Court"] },
 ], null, 2);
 
+// ─── ANSPL-specific defaults ──────────────────────────────────────────────────
+
+const ANSPL_SLIDES_DEFAULT = JSON.stringify([
+  { img: "https://anspl.co.in/assets/TMTRollingMills2-CFNQYEss.jpg", badge: "Steel & Rolling Mills", pre: "One Stop Solution", heading: "For Electrical &\nAutomation Projects", body: "Turnkey design, manufacturing and commissioning of electrical & industrial automation systems across India and South Asia.", pill: "Spirit of Innovation — Since 1997" },
+  { img: "https://anspl.co.in/assets/ACDrive2-Otp3Yuwc.jpg", badge: "VFD Drive Systems", pre: "Complete Drive Solutions", heading: "0.37kW to 1200kW\nAC & DC Drives", body: "Supply, panel integration and on-site commissioning. Sectional drives for wire drawing, rolling mills and paper plants.", pill: "ABB System House · Authorised Distributor" },
+  { img: "https://anspl.co.in/assets/Panel0-D3e2k-is.jpg", badge: "Panel Manufacturing", pre: "6,000 Sq.ft. Factory", heading: "100 Panel Doors\nEvery Month", body: "In-house panel factory at Ramchandrapur with the only automatic busbar bending machine in East India.", pill: "ISO 9001:2015 Certified · East India" },
+], null, 2);
+
+const ANSPL_BLOCKS_DEFAULT = JSON.stringify([
+  { label: "In-House", title: "Panel Manufacturing", img: "https://anspl.co.in/assets/Panel0-D3e2k-is.jpg", desc: "6,000 sq.ft. Kolkata factory — 100 doors/month. Automatic busbar bending machine (only one in East India).", points: ["33kV / 11kV HT VCB Panels", "LT Busduct & PCC / PDB Panels", "VFD Panels & PLC Panels", "DG Synchronization Panels", "Control Desks & Junction Boxes"] },
+  { label: "Drives", title: "VFD & Drive Systems", img: "https://anspl.co.in/assets/ACDrive2-Otp3Yuwc.jpg", desc: "Supply & commissioning from 0.37kW to 1200kW — all industrial motor applications.", points: ["AC VFD (VVVF) drives up to 1200kW", "DC drives for retrofit & new installations", "Sectional drive systems for wire drawing & rolling mills", "Complete motor packages with panel integration", "On-site commissioning & operator training"] },
+  { label: "Automation", title: "PLC, SCADA & DCS", img: "https://anspl.co.in/assets/SoftwareSCADA1-DfJZpc-G.jpg", desc: "IIT Delhi & REC-trained engineers — delivered for L&T, Danieli and Tenova.", points: ["PLC-based automation — design to commissioning", "DCS for paper & pulp and process industries", "SCADA software development & energy dashboards", "HMI design and cloud-based data acquisition"] },
+  { label: "Consulting & After-Sales", title: "Energy Audit, Consultancy & AMC", img: "https://anspl.co.in/assets/EMS0-DQTTRtlR.png", desc: "Project engineering consulting, energy reports and annual maintenance contracts.", points: ["Energy audit & power utilization reports", "HT & LT system design, SLD, cable scheduling", "Supervision of erection & commissioning", "AMC, AC/DC drive repair & CNC machine servicing"] },
+], null, 2);
+
+const ANSPL_PRODUCTS_DEFAULT = JSON.stringify([
+  { badge: "Authorised Distributor", title: "VFD Drives (0.37kW – 1200kW)", img: "https://anspl.co.in/assets/ACDrive0-87i251cT.png", desc: "Complete range of Variable Frequency Drives — selection, supply, panel integration and commissioning.", points: ["AC drives (VVVF) and DC drives for all applications", "0.37kW to 1200kW — covers every motor load", "On-site commissioning, parameter setting and training", "After-sales repair, spares and AMC support"] },
+  { badge: "System Integrator", title: "PLC & Automation Controllers", img: "https://anspl.co.in/assets/SoftwareSCADA0-j6zzjK_i.jpg", desc: "25+ years PLC integration — hardware selection, programming, commissioning and operator training.", points: ["PLC hardware selection and panel design", "Custom programming for process & sequence control", "Servo controllers for machine tools & SPMs", "DCS packages for continuous process industries"] },
+  { badge: "Balluff India — East India SI", title: "Balluff Industrial Sensors", img: "https://anspl.co.in/assets/BalluffSiemens0-DhIy0x2s.jpg", desc: "Authorised SI for Balluff India covering East India, Bangladesh & Nepal — full sensor range.", points: ["Inductive, capacitive and magnetic proximity sensors", "Photoelectric sensors and linear position systems", "RFID for industrial track & trace", "IO-Link smart sensor technology"] },
+  { badge: "IPA India SI", title: "IPA Weigh Feeders & Load Cells", img: "https://anspl.co.in/assets/IPA1-CuAJbc8b.jpg", desc: "Authorised SI for IPA India, Bangalore — specialist weighing automation.", points: ["Load cells for industrial weighing & force measurement", "Gravimetric and volumetric weigh feeders", "Belt weighers and conveyor weighing systems", "Complete PLC integration and commissioning"] },
+], null, 2);
+
+const ANSPL_PROJECTS_DEFAULT = JSON.stringify([
+  { tag: "Electrification", title: "Sand Plant Electrification", client: "L&T", loc: "East India", type: "Turnkey EPC", img: "https://anspl.co.in/assets/SiteErection2-CZuJ0WN6.jpg" },
+  { tag: "Wire Drawing", title: "8-Block Wire Drawing Automation", client: "Miki Wire", loc: "West Bengal", type: "Drives + PLC + SCADA", img: "https://anspl.co.in/assets/WireDrawingPlants1-Cx0gL6WJ.jpg" },
+  { tag: "Rolling Mill", title: "Danieli Rolling Mill — SCADA & PLC", client: "Danieli Group", loc: "East India", type: "PLC + MCC + SCADA", img: "https://anspl.co.in/assets/TMTRollingMills3-D5h3I46v.jpg" },
+  { tag: "Panel Mfg.", title: "PCC Panel — Bengal Tools", client: "Bengal Tools", loc: "Kolkata", type: "Panel Manufacturing", img: "https://anspl.co.in/assets/BoltedPanels0-DoAsP7Dl.jpg" },
+  { tag: "Building Auto.", title: "BMS & HVAC Automation", client: "Commercial Developer", loc: "Kolkata", type: "BMS + HVAC + Fire", img: "https://anspl.co.in/assets/BuildingAutomation2-B5qBP5yI.jpg" },
+], null, 2);
+
+const ANSPL_INDUSTRIES_DEFAULT = JSON.stringify([
+  { n: "01", title: "Rolling Mills", sub: "Flying shear, SCADA, coil lines", img: "https://anspl.co.in/assets/TMTRollingMills2-CFNQYEss.jpg" },
+  { n: "02", title: "Paper & Pulp", sub: "DCS, rewinder, PCC/MCC", img: "https://anspl.co.in/assets/PulpPaper2-BZMfCP6t.jpg" },
+  { n: "03", title: "Building Automation", sub: "HVAC, BMS, fire panels", img: "https://anspl.co.in/assets/BuildingAutomation0-CIw5a8aZ.jpg" },
+  { n: "04", title: "Wire Drawing", sub: "Multi-block drives, PLC", img: "https://anspl.co.in/assets/WireDrawingPlants0-CPzQ96lK.jpg" },
+  { n: "05", title: "Steel Processing", sub: "Coil processing, slitters", img: "https://anspl.co.in/assets/CoilProcessingLines2-BSmvAot-.jpg" },
+  { n: "06", title: "Machinery & CNC", sub: "Retrofitment, SPM automation", img: "https://anspl.co.in/assets/FurnacesCCM1-38eKbwjF.jpg" },
+], null, 2);
+
+const MILESTONES_DEFAULT = JSON.stringify([
+  { year: "1997–98", title: "Foundation", desc: "Formed for sales & services of Kirloskar Electric machine tool products." },
+  { year: "2004–05", title: "ABB System House", desc: "Appointed ABB System House for drives & automation." },
+  { year: "2010–11", title: "Factory Commissioned", desc: "6,000 sq.ft. panel building unit at Ramchandrapur." },
+  { year: "2012–13", title: "Siemens Integrator", desc: "Appointed SI for Siemens drives & automation." },
+  { year: "2022–24", title: "Balluff India SI", desc: "Authorised SI for East India, Bangladesh & Nepal." },
+  { year: "2025–26", title: "IPA India Partner", desc: "SI for load cells, weigh feeders & weighing automation." },
+], null, 2);
+
+const CERTIFICATIONS_DEFAULT = JSON.stringify([
+  { icon: "🏆", title: "ISO 9001:2015", desc: "Quality Management System for design, manufacturing & commissioning" },
+  { icon: "🔬", title: "Balluff India SI", desc: "Authorised SI for East India, Bangladesh & Nepal (2022)" },
+  { icon: "⚖️", title: "IPA India SI", desc: "Load cell, weigh feeder & weighing automation partner (2025)" },
+  { icon: "⚙️", title: "ABB System House", desc: "Drives & automation system house since 2004" },
+], null, 2);
+
+const PARTNERS_DEFAULT = JSON.stringify([
+  { name: "ABB", role: "System House — Drives & Automation" },
+  { name: "Siemens", role: "System Integrator — Drives (2012–13)" },
+  { name: "Balluff India", role: "Authorised SI — East India, BD & Nepal" },
+  { name: "IPA India", role: "SI — Load Cells & Weigh Feeders" },
+  { name: "Bosch Rexroth", role: "SI — Servo Motors & Controllers" },
+  { name: "Rittal", role: "Collaboration — PMCC & PLC Panels" },
+], null, 2);
+
+const OFFICES_DEFAULT = JSON.stringify([
+  { title: "Head Office & Works", lines: ["Ramchandrapur, Narendrapur", "P.S. Sonarpur, Kolkata – 700 103", "West Bengal, India"], map: "https://maps.google.com/?q=Ramchandrapur+Narendrapur+Kolkata" },
+  { title: "Marketing Office", lines: ["3rd Floor, 44A, Shyama Pally", "Jadavpur, Kolkata – 700 032", "West Bengal, India"], map: "https://maps.google.com/?q=44A+Shyama+Pally+Jadavpur+Kolkata" },
+  { title: "Patna Office", lines: ["Omsai Villa, #302, 3rd Floor", "Kankarbagh, Patna – 800 020", "Bihar, India"], map: null },
+  { title: "Dhaka Office", lines: ["Mr. Alok Kumar — +880 1933 168401", "College Gate, Tongi, Dhaka", "Bangladesh"], map: null },
+], null, 2);
+
+const ANSPL_TEAM_DEFAULT = JSON.stringify([
+  { init: "RS", name: "Raj Kumar Srivastava", role: "Software & Engineering Head", edu: "M.Tech IIT Delhi · B.E. REC Durgapur", exp: "Ex-Tata Motors Jamshedpur (1984–97)" },
+  { init: "KK", name: "Kiran Kumar Kasaragod", role: "Marketing, Production & Accounts", edu: "B.E. SJCE Mysore", exp: "Ex-Kirloskar Electric (1991–97)" },
+  { init: "TG", name: "Tapan Ghosh", role: "Software Dev & Project Execution", edu: "Diploma — Electrical & Electronics", exp: "ANSPL since 2010" },
+  { init: "SN", name: "Subhadeep Nej", role: "Design, Engineering & Drawings", edu: "Diploma — Electrical & Electronics", exp: "ANSPL since 2014" },
+], null, 2);
+
+const STAFF_DEFAULT = JSON.stringify([
+  { name: "Dr. Priti Tayade",      title: "Patent Attorney",                  role: "Senior Associate" },
+  { name: "Mr. Abhilash Shukla",   title: "Advocate & Trademark Attorney",    role: "Senior Associate" },
+  { name: "Mr. Soumya Palo",       title: "Advocate & Trademark Attorney",    role: "Senior Associate" },
+  { name: "Mr. G. Ramji",          title: "Advocate & Trademark Attorney",    role: "Senior Associate" },
+  { name: "Mr. Kapil Jain",        title: "Advocate & Trademark Attorney",    role: "Senior Associate" },
+  { name: "Mr. Jay D. Shah",       title: "Advocate & Trademark Attorney",    role: "Associate" },
+  { name: "Mr. Pankaj Kedia",      title: "CA, Advocate & Trademark Attorney",role: "Associate" },
+  { name: "Mr. Arkadyuti Sarkar",  title: "Advocate & Trademark Attorney",    role: "Associate" },
+  { name: "Mr. J. Patel",          title: "Paralegal",                        role: "Paralegal" },
+  { name: "Mrs. S. Sarkar",        title: "Paralegal",                        role: "Paralegal" },
+], null, 2);
+
 const TESTIMONIALS_DEFAULT = JSON.stringify([
   { name: "Usha Sharma", business: "Usha's Frosting Cakes", location: "Kolkata", service: "Trademark", quote: "I launched my bakery brand and VS Arora filed my trademark within days. When a competitor tried to copy my name, we had full legal protection to fight back.", initial: "U", rating: 5 },
   { name: "Naacho Kids", business: "Children's Brand", location: "West Bengal", service: "Trademark", quote: "Filing trademarks for our kids brand was surprisingly easy with VS Arora & Co. The whole procedure went smoothly and I can now rest knowing our brand is safe and protected.", initial: "N", rating: 5 },
@@ -53,6 +144,11 @@ export const DEFAULT_FIELDS: Record<string, FieldDef[]> = {
   team: [
     { key: "title",     label: "Section Title",          type: "text",     default_value: "Meet the People Behind VS Arora & Co." },
     { key: "team_json", label: "Team Members (JSON)",    type: "textarea", default_value: TEAM_DEFAULT },
+  ],
+  staff: [
+    { key: "title",       label: "Section Title",        type: "text",     default_value: "Associates & Legal Professionals" },
+    { key: "description", label: "Description",          type: "textarea", default_value: "Our team of experienced advocates, patent attorneys, trademark specialists and paralegals work together to deliver comprehensive IP protection for every client." },
+    { key: "staff_json",  label: "Staff Members (JSON)", type: "textarea", default_value: STAFF_DEFAULT },
   ],
   testimonials: [
     { key: "title",               label: "Section Title",       type: "text",     default_value: "What Our Clients Say" },
@@ -96,7 +192,109 @@ export const DEFAULT_FIELDS: Record<string, FieldDef[]> = {
     { key: "title",   label: "Title",   type: "text" },
     { key: "content", label: "Content", type: "richtext" },
   ],
+  // ── ANSPL-specific section types ────────────────────────────────────────────
+  slides: [
+    { key: "slides_json", label: "Hero Slides (JSON)", type: "textarea", default_value: ANSPL_SLIDES_DEFAULT },
+  ],
+  blocks: [
+    { key: "title",      label: "Section Title",        type: "text",     default_value: "Our Services" },
+    { key: "blocks_json", label: "Service Blocks (JSON)", type: "textarea", default_value: ANSPL_BLOCKS_DEFAULT },
+  ],
+  products: [
+    { key: "title",        label: "Section Title",    type: "text",     default_value: "Products We Offer" },
+    { key: "products_json", label: "Products (JSON)",  type: "textarea", default_value: ANSPL_PRODUCTS_DEFAULT },
+  ],
+  projects_list: [
+    { key: "title",        label: "Section Title",    type: "text",     default_value: "Project Portfolio" },
+    { key: "projects_json", label: "Projects (JSON)",  type: "textarea", default_value: ANSPL_PROJECTS_DEFAULT },
+  ],
+  industries_list: [
+    { key: "title",           label: "Section Title",      type: "text",     default_value: "Industries We Serve" },
+    { key: "industries_json",  label: "Industries (JSON)",   type: "textarea", default_value: ANSPL_INDUSTRIES_DEFAULT },
+  ],
+  milestones: [
+    { key: "title",           label: "Section Title",      type: "text",     default_value: "Our Journey" },
+    { key: "milestones_json",  label: "Milestones (JSON)",   type: "textarea", default_value: MILESTONES_DEFAULT },
+  ],
+  certifications: [
+    { key: "title",      label: "Section Title",           type: "text",     default_value: "Certifications & Partnerships" },
+    { key: "certs_json",  label: "Certifications (JSON)",   type: "textarea", default_value: CERTIFICATIONS_DEFAULT },
+  ],
+  partners: [
+    { key: "title",         label: "Section Title",       type: "text",     default_value: "Technology Partners" },
+    { key: "partners_json",  label: "Partners (JSON)",     type: "textarea", default_value: PARTNERS_DEFAULT },
+  ],
+  offices: [
+    { key: "phone_1",        label: "Phone 1",              type: "text",     default_value: "+91 98305 05000" },
+    { key: "phone_2",        label: "Phone 2",              type: "text",     default_value: "+91 93395 05012" },
+    { key: "email_primary",  label: "Primary Email",        type: "text",     default_value: "kiran@automationnetwork.net" },
+    { key: "email_support",  label: "Support Email",        type: "text",     default_value: "msupport@automationnetwork.net" },
+    { key: "offices_json",   label: "Office Locations (JSON)", type: "textarea", default_value: OFFICES_DEFAULT },
+  ],
+  anspl_team: [
+    { key: "title",           label: "Section Title",       type: "text",     default_value: "Our Team" },
+    { key: "anspl_team_json", label: "Team Members (JSON)", type: "textarea", default_value: ANSPL_TEAM_DEFAULT },
+  ],
 };
+
+// Standard pages for ANSPL website — used by "Initialize Pages" when websiteSlug = "anspl"
+export const ANSPL_STANDARD_PAGES = [
+  {
+    title: "Home", slug: "home",
+    sections: [
+      { type: "slides",         label: "Hero Slider" },
+      { type: "stats",          label: "Stats Strip" },
+      { type: "blocks",         label: "Services" },
+      { type: "industries_list",label: "Industries" },
+      { type: "testimonials",   label: "Testimonials" },
+      { type: "partners",       label: "Technology Partners" },
+      { type: "cta",            label: "CTA Banner" },
+    ],
+  },
+  {
+    title: "About Us", slug: "about",
+    sections: [
+      { type: "hero",          label: "Hero" },
+      { type: "about",         label: "Our Story" },
+      { type: "stats",         label: "Stats" },
+      { type: "milestones",    label: "Milestones" },
+      { type: "anspl_team",    label: "Team" },
+      { type: "certifications",label: "Certifications" },
+      { type: "cta",           label: "CTA" },
+    ],
+  },
+  {
+    title: "Services", slug: "services",
+    sections: [
+      { type: "hero",   label: "Hero" },
+      { type: "blocks", label: "Service Blocks" },
+      { type: "cta",    label: "CTA" },
+    ],
+  },
+  {
+    title: "Products", slug: "products",
+    sections: [
+      { type: "hero",     label: "Hero" },
+      { type: "products", label: "Products" },
+      { type: "cta",      label: "CTA" },
+    ],
+  },
+  {
+    title: "Projects", slug: "projects",
+    sections: [
+      { type: "hero",          label: "Hero" },
+      { type: "projects_list", label: "Projects" },
+      { type: "cta",           label: "CTA" },
+    ],
+  },
+  {
+    title: "Contact", slug: "contact",
+    sections: [
+      { type: "hero",    label: "Hero" },
+      { type: "offices", label: "Offices & Contact" },
+    ],
+  },
+];
 
 // Standard pages created by the "Initialize Pages" button.
 // Each page gets its sections and fields pre-filled with the default values above.
@@ -118,6 +316,7 @@ export const STANDARD_PAGES = [
       { type: "about",        label: "Mission" },
       { type: "stats",        label: "Stats" },
       { type: "team",         label: "Team" },
+      { type: "staff",        label: "Staff" },
       { type: "cta",          label: "CTA" },
     ],
   },

@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createClient as createServerClient } from "@/lib/supabase/server";
 import { createClient } from "@supabase/supabase-js";
-import { DEFAULT_FIELDS, STANDARD_PAGES } from "@/lib/page-seed-config";
+import { DEFAULT_FIELDS, STANDARD_PAGES, ANSPL_STANDARD_PAGES } from "@/lib/page-seed-config";
 
 function getServiceClient() {
   return createClient(
@@ -21,11 +21,19 @@ export async function POST(request: NextRequest) {
 
   const admin = getServiceClient();
 
+  // Determine which page set to use based on the website slug
+  const { data: website } = await admin
+    .from("websites")
+    .select("slug")
+    .eq("id", websiteId)
+    .maybeSingle();
+  const pageTemplate = website?.slug === "anspl" ? ANSPL_STANDARD_PAGES : STANDARD_PAGES;
+
   const created: string[] = [];
   const skipped: string[] = [];
   const errors: string[] = [];
 
-  for (const pageConfig of STANDARD_PAGES) {
+  for (const pageConfig of pageTemplate) {
     // Skip if this page slug already exists for this website
     const { data: existing } = await admin
       .from("pages")
